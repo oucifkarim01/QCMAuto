@@ -1,0 +1,35 @@
+-- answer_creater.c : creates questionnaire txt file by keyboard input , these files verify all condition on exercise text
+-- answer_creater.c : read from questionnaire txt file and read user responses shows a score, then save responses on txt file response_family_name.txt
+-- There a massive problem when reading strings ang integers using scanf , so i replaced it with:
+for integers :         
+    fgets(count,sizeof(count),stdin); read numbers as strings
+    question_count = atoi(count);   and then  cast these strings to integers.
+for strings :
+    fgets(answer,sizeof(answer),stdin); reading string
+    answer[strcspn(answer, "\n")] = 0;  removing the \n new line symbole from the end of string (added by fgets enter button)
+-----
+used the same structure for all question types 
+only differce is when it came to true false question we won't need to use same parts as answers , because we already now 
+the answer is true or false , so we igonre variable of answer_1 2 3,
+for question type :  1 for True/False , 2 for Single Answer , 3 for Multi Answer 
+struct Question {
+    // Variable that defines type of question :: 1 for True/False , 2 for Single Answer , 3 for Multi Answer
+    int type ;
+    // setting max count of question text string
+    char text[512];
+    // array of answer (string) , for True False we won't use this array
+    char answer_1[256];
+    char answer_2[256];
+    char answer_3[256];
+    
+    // Points for each answer , for True False we use only emlemnts of array 
+    int points[3];
+};
+-- question  file txt structure for single or multi answer Question :
+Question Text:Question Type(2 or 3):Answer Option 1:Answer Option 2:Answer Option 3	:option 1 point:option 2 point:option 3 point
+for true false  :
+Question Text:Question Type(1):true answer points:false answer points
+-- answer  file txt structure for multi answer Question :
+same structure of question file addding : user Answer 1 : user Answer 2
+for true false or Single Answer question  :
+same structure of question file addding : user Answer 1 

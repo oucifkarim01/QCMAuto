@@ -1,0 +1,3 @@
+karim is the best 	:	3	:	true	:	yes	:	no	:	40	:	25	:	-44
+karimo	:	2	:	oucif	:	dizad	:	test	:	4	:	0	:	0
+does water fly	:	1	:	-44	:	20
